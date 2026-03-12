@@ -127,7 +127,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.2rem 5%;
+  padding: 1rem 5%;
   transition: background var(--transition), box-shadow var(--transition);
 }
 
@@ -139,7 +139,7 @@ button {
 
 .navbar__logo {
   font-family: var(--font-heading);
-  font-size: 1.8rem;
+  font-size: 1.55rem;
   font-weight: 700;
   letter-spacing: -.02em;
 }
@@ -150,11 +150,11 @@ button {
 
 .navbar__links {
   display: flex;
-  gap: 2.8rem;
+  gap: 2.2rem;
 }
 
 .nav-link {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 500;
   color: var(--text-secondary);
   position: relative;
@@ -436,7 +436,7 @@ button {
 }
 
 .stat-card {
-  padding: var(--space-lg) var(--space-md);
+  padding: var(--space-md);
   text-align: center;
   transition: transform var(--transition), box-shadow var(--transition);
 }
@@ -487,7 +487,7 @@ button {
 }
 
 .skill-card {
-  padding: var(--space-lg) var(--space-md);
+  padding: var(--space-md);
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
@@ -497,8 +497,8 @@ button {
 }
 
 .skill-card__icon {
-  width: 3rem;
-  height: 3rem;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
   border-radius: var(--radius-sm);
@@ -508,8 +508,8 @@ button {
 }
 
 .skill-card__icon svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 24px;
+  height: 24px;
 }
 
 .skill-card h3 {
@@ -603,7 +603,7 @@ button {
 }
 
 .project-card__body {
-  padding: var(--space-md) var(--space-md) var(--space-lg);
+  padding: var(--space-md);
 }
 
 .project-card__body h3 {
@@ -730,8 +730,8 @@ button {
 }
 
 .contact-info-card__icon {
-  width: 3rem;
-  height: 3rem;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
   border-radius: var(--radius-sm);
@@ -741,8 +741,8 @@ button {
 }
 
 .contact-info-card__icon svg {
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 22px;
+  height: 22px;
 }
 
 .contact-info-card h4 {
@@ -763,8 +763,8 @@ button {
 }
 
 .social-link {
-  width: 3rem;
-  height: 3rem;
+  width: 46px;
+  height: 46px;
   display: grid;
   place-items: center;
   border-radius: var(--radius-sm);
@@ -773,8 +773,8 @@ button {
 }
 
 .social-link svg {
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 20px;
+  height: 20px;
 }
 
 .social-link:hover {
