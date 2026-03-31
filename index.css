@@ -50,15 +50,9 @@
 }
 
 html {
-  font-size: 18px;
+  font-size: 16px;
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
-}
-
-@media (min-width: 1024px) {
-  html {
-    font-size: 24px;
-  }
 }
 
 body {
@@ -220,6 +214,7 @@ button {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  padding-top: 5rem;
   text-align: center;
   overflow: hidden;
 }
@@ -824,6 +819,15 @@ button {
 }
 
 @media (max-width: 768px) {
+  .navbar {
+    justify-content: center;
+    position: relative;
+  }
+
+  .navbar__logo {
+    text-align: center;
+  }
+
   .navbar__links {
     position: fixed;
     inset: 0;
@@ -849,7 +853,10 @@ button {
 
   .navbar__hamburger {
     display: flex;
-    position: relative;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 101;
   }
 
