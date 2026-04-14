@@ -143,6 +143,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ── Contact Form ── */
+  // Initialize EmailJS
+  emailjs.init('pHUAALjhwOC22olfg'); // Replace with your actual public key
+
   const form     = document.getElementById('contact-form');
   const feedback = document.getElementById('form-feedback');
 
@@ -167,18 +170,29 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Simulate submit
+    // Send email
     const btn = document.getElementById('submit-btn');
     btn.disabled = true;
     btn.querySelector('span').textContent = 'Sending…';
 
-    setTimeout(() => {
+    emailjs.send('service_i02a0vm', 'template_2y2s5th', {
+      from_name: name,
+      from_email: email,
+      message: message,
+      to_email: 'hagglaagyei@gmail.com'
+    }).then(() => {
       feedback.textContent = 'Message sent successfully! I\'ll get back to you soon. ✨';
-      feedback.className   = 'form-feedback success';
+      feedback.className = 'form-feedback success';
       form.reset();
       btn.disabled = false;
       btn.querySelector('span').textContent = 'Send Message';
-    }, 1200);
+    }, (error) => {
+      console.error('EmailJS error:', error);
+      feedback.textContent = 'Failed to send message. Please try again.';
+      feedback.className = 'form-feedback error';
+      btn.disabled = false;
+      btn.querySelector('span').textContent = 'Send Message';
+    });
   });
 
 
