@@ -3,179 +3,286 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Haggla Mensah Agyei | IT Student & Aspiring Security Researcher</title>
-  <meta name="description" content="Portfolio of Haggla Mensah Agyei, a final-year Information Technology student at UENR interested in cybersecurity, secure systems, privacy, applied cryptography, and software engineering." />
-  <meta name="author" content="Haggla Mensah Agyei" />
+  <title>Portfolio — Haggla</title>
+  <meta name="description" content="A modern developer portfolio showcasing projects, skills, and experience." />
+  <meta property="og:title" content="Portfolio — Haggla" />
+  <meta property="og:description" content="Explore my projects, skills, and experience in modern web development." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="index.css" />
 </head>
+
 <body>
 
-<header class="navbar" id="navbar">
-  <div class="container nav-container">
-    <a href="#home" class="logo">Haggla<span>.</span></a>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+  <!-- ─── Navbar ─── -->
+  <nav id="navbar" class="navbar">
+    <a href="#hero" class="navbar__logo">
+      <span class="logo-bracket">&lt;</span>Portfolio<span class="logo-bracket"> /&gt;</span>
+    </a>
+    <ul id="nav-links" class="navbar__links">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <button id="hamburger" class="navbar__hamburger" aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-<main>
-  <section id="home" class="hero">
-    <div class="container hero-content">
-      <div class="hero-text">
-        <p class="eyebrow">INFORMATION TECHNOLOGY · SECURE SYSTEMS</p>
-        <h1>Building software with <span>security in mind.</span></h1>
-        <p class="hero-description">
-          I'm Haggla Mensah Agyei, a final-year BSc Information Technology student
-          at the University of Energy and Natural Resources (UENR), Ghana. I build
-          practical software systems and explore security, privacy, authentication,
-          and data protection.
-        </p>
-        <div class="hero-buttons">
-          <a href="#projects" class="btn primary">View My Projects</a>
-          <a href="docs/Haggla_Mensah_Agyei_CV.pdf" class="btn primary" target="_blank" rel="noopener noreferrer">Download CV</a>
-          <a href="https://github.com/Haggla123" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a>
+  <!-- ─── Hero ─── -->
+  <section id="hero" class="hero">
+    <div class="hero__glow hero__glow--1"></div>
+    <div class="hero__glow hero__glow--2"></div>
+    <div class="hero__content">
+      <p class="hero__greeting reveal">Hello, I'm</p>
+      <h1 class="hero__name reveal">
+        <span class="gradient-text" id="typed-name"></span><span class="cursor">|</span>
+      </h1>
+      <p class="hero__tagline reveal">A <span class="gradient-text">Creative Developer</span> crafting beautiful digital experiences.</p>
+      <div class="hero__cta reveal">
+        <a href="#projects" class="btn btn--primary">View My Work</a>
+        <a href="#contact" class="btn btn--outline">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero__scroll-indicator">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ─── About ─── -->
+  <section id="about" class="section about">
+    <div class="container">
+      <h2 class="section__title reveal"><span class="gradient-text">About Me</span></h2>
+      <div class="about__grid">
+        <div class="about__text reveal">
+          <p>
+            I'm a passionate full-stack developer with a keen eye for design and a love for creating
+            seamless, intuitive user experiences. With years of experience building modern web applications,
+            I bring ideas to life through clean code and creative problem-solving.
+          </p>
+          <p>
+            When I'm not coding, you'll find me exploring new technologies, contributing to open-source
+            projects, or sharing knowledge with the developer community.
+          </p>
+        </div>
+        <div class="about__stats reveal">
+          <div class="stat-card glass-card">
+            <span class="stat-card__number" data-target="4">0</span><span class="stat-card__plus">+</span>
+            <span class="stat-card__label">Years Experience</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-card__number" data-target="12">0</span><span class="stat-card__plus">+</span>
+            <span class="stat-card__label">Projects Completed</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-card__number" data-target="11">0</span><span class="stat-card__plus">+</span>
+            <span class="stat-card__label">Happy Clients</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-card__number" data-target="10">0</span><span class="stat-card__plus">+</span>
+            <span class="stat-card__label">Open Source Repos</span>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+    </section>
 
-  <section id="about" class="section">
+  <!-- ─── Skills ─── -->
+  <section id="skills" class="section skills">
     <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">ABOUT ME</p>
-        <h2>From building systems to understanding how to secure them.</h2>
-      </div>
-      <div class="about-content">
-        <p>I am a final-year Information Technology student at the University of Energy and Natural Resources (UENR) in Sunyani, Ghana, graduating in 2026.</p>
-        <p>My interests sit at the intersection of software development and cybersecurity. I enjoy building real-world systems and examining the security and privacy challenges that arise from authentication, data handling, system architecture, and digital transactions.</p>
-        <p>My projects have given me practical experience with authentication, role-based access control, hashing, HMAC-based verification, databases, APIs, real-time systems, and full-stack application development.</p>
-        <p>I am particularly interested in pursuing graduate research in cybersecurity and secure systems, while remaining open to related areas of computer science and software engineering.</p>
+      <h2 class="section__title reveal"><span class="gradient-text">Skills & Technologies</span></h2>
+      <div class="skills__grid">
+
+        <div class="skill-card glass-card reveal">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>
+          </div>
+          <h3>Frontend</h3>
+          <div class="skill-bar"><div class="skill-bar__fill" data-width="92"></div></div>
+          <ul class="skill-card__tags">
+            <li>React</li><li>Vue</li><li>TypeScript</li><li>Next.js</li>
+          </ul>
+        </div>
+
+        <div class="skill-card glass-card reveal">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Backend</h3>
+          <div class="skill-bar"><div class="skill-bar__fill" data-width="85"></div></div>
+          <ul class="skill-card__tags">
+            <li>Node.js</li><li>Python</li><li>Express</li><li>Django</li>
+          </ul>
+        </div>
+
+        <div class="skill-card glass-card reveal">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <h3>Databases</h3>
+          <div class="skill-bar"><div class="skill-bar__fill" data-width="78"></div></div>
+          <ul class="skill-card__tags">
+            <li>PostgreSQL</li><li>MongoDB</li><li>Redis</li><li>Firebase</li>
+          </ul>
+        </div>
+
+        <div class="skill-card glass-card reveal">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>DevOps</h3>
+          <div class="skill-bar"><div class="skill-bar__fill" data-width="70"></div></div>
+          <ul class="skill-card__tags">
+            <li>Docker</li><li>AWS</li><li>CI/CD</li><li>Linux</li>
+          </ul>
+        </div>
+
+        <div class="skill-card glass-card reveal">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+          </div>
+          <h3>Design</h3>
+          <div class="skill-bar"><div class="skill-bar__fill" data-width="80"></div></div>
+          <ul class="skill-card__tags">
+            <li>Figma</li><li>UI/UX</li><li>Motion</li><li>Branding</li>
+          </ul>
+        </div>
+
+        <div class="skill-card glass-card reveal">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z"/></svg>
+          </div>
+          <h3>Other</h3>
+          <div class="skill-bar"><div class="skill-bar__fill" data-width="88"></div></div>
+          <ul class="skill-card__tags">
+            <li>Git</li><li>REST</li><li>GraphQL</li><li>Testing</li>
+          </ul>
+        </div>
+
       </div>
     </div>
-  </section>
+    </section>
 
-  <section id="research" class="section research-section">
+  <!-- ─── Projects ─── -->
+  <section id="projects" class="section projects">
     <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">RESEARCH INTERESTS</p>
-        <h2>Questions I want to explore.</h2>
-      </div>
-      <div class="research-grid">
-        <article class="research-card"><h3>Cybersecurity & Secure Systems</h3><p>Security of real-world software systems, authentication, authorization, secure software design, and system-level security weaknesses.</p></article>
-        <article class="research-card"><h3>Privacy & Data Protection</h3><p>Privacy-preserving technologies, data exposure, metadata, data persistence, and the relationship between system architecture and user privacy.</p></article>
-        <article class="research-card"><h3>Applied Cryptography</h3><p>Practical applications of hashing, message authentication, cryptographic verification, and secure communication in software systems.</p></article>
-        <article class="research-card"><h3>Mobile & Digital-Financial Security</h3><p>Security challenges affecting mobile applications, digital financial systems, authentication workflows, and resource-constrained environments.</p></article>
-      </div>
-    </div>
-  </section>
+      <h2 class="section__title reveal"><span class="gradient-text">Featured Projects</span></h2>
+      <div class="projects__grid">
 
-  <section id="projects" class="section">
-    <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">SELECTED WORK</p>
-        <h2>Projects that demonstrate how I think and build.</h2>
-        <p>A focused selection of systems I've designed and developed, with an emphasis on security, software architecture, and practical problem solving.</p>
-      </div>
-
-      <div class="projects-grid">
-        <article class="project-card project-card--featured">
-          <div class="project-content">
-            <p class="project-type">FULL-STACK · SECURITY · REAL-TIME SYSTEMS</p>
-            <h3>VoxUnite</h3>
-            <p>A university digital voting platform designed for student elections, featuring separate administrator and student workflows and real-time election monitoring.</p>
-            <ul>
-              <li>OTP-based voter authentication</li>
-              <li>Role-based access control</li>
-              <li>Layered duplicate-vote prevention</li>
-              <li>Audit logging</li>
-              <li>Real-time election updates</li>
+        <article class="project-card glass-card reveal" id="project-1">
+          <div class="project-card__image">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Inventory Management System" loading="lazy" />
+          </div>
+          <div class="project-card__body">
+            <h3>Inventory Management System</h3>
+            <p>A full-featured analytics dashboard with real-time data visualization, user management, and inventory tracking.</p>
+            <ul class="project-card__tags">
+              <li>React</li><li>Node.js</li><li>MongoDB</li>
             </ul>
-            <div class="tech-stack"><span>React</span><span>TypeScript</span><span>Node.js</span><span>MongoDB</span><span>Socket.IO</span></div>
-            <div class="project-links">
-              <a href="https://github.com/Haggla123/VoxUnite" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+          </div>
+        </article>
+
+        <article class="project-card glass-card reveal" id="project-2">
+          <div class="project-card__image">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="Exam Eligibility System" loading="lazy" />
+            <div class="project-card__overlay">
+              <a href="https://cug-ees.vercel.app" class="btn btn--small btn--primary">Live Demo</a>
+              <a href="https://github.com/Haggla123/cug-ees" class="btn btn--small btn--outline">GitHub</a>
             </div>
           </div>
-          <div class="project-visual"><img src="assets/voxunite.svg" alt="VoxUnite dashboard preview" loading="lazy"></div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-visual"><img src="assets/payment-system.svg" alt="Charity payment system preview" loading="lazy"></div>
-          <div class="project-content">
-            <p class="project-type">WEB APPLICATION · PAYMENT SECURITY</p>
-            <h3>Charity Foundation Payment System</h3>
-            <p>A web-based donation platform integrating Paystack for online payments and backend transaction verification.</p>
-            <ul><li>Paystack payment integration</li><li>HMAC-SHA512 webhook verification</li><li>Transaction verification</li><li>Secure backend payment workflows</li></ul>
-            <div class="tech-stack"><span>MERN</span><span>Paystack</span><span>HMAC-SHA512</span><span>REST API</span></div>
-            <div class="project-links"><a href="https://github.com/Haggla123/ROTEH-Payments" target="_blank" rel="noopener noreferrer">View on GitHub →</a></div>
+          <div class="project-card__body">
+            <h3>Exam Eligibility System</h3>
+            <p>A comprehensive system for managing exam eligibility criteria and student applications.</p>
+            <ul class="project-card__tags">
+              <li>Vue.js</li><li>WebSocket</li><li>Express</li><li>PostgreSQL</li>
+            </ul>
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-visual"><img src="assets/internship.svg" alt="Internship management system preview" loading="lazy"></div>
-          <div class="project-content">
-            <p class="project-type">INFORMATION SYSTEM · DATABASE</p>
+        <article class="project-card glass-card reveal" id="project-3">
+          <div class="project-card__image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Internship Management System" loading="lazy" />
+            <div class="project-card__overlay">
+              <a href="https://uenrinterntrack.vercel.app" class="btn btn--small btn--primary">Live Demo</a>
+              <a href="https://github.com/Haggla123/interntrack-frontend" class="btn btn--small btn--outline">GitHub</a>
+            </div>
+          </div>
+          <div class="project-card__body">
             <h3>Internship Management System</h3>
-            <p>A multi-user institutional system designed to manage student internships, verification, progress logging, tracking, and assessment.</p>
-            <ul><li>Multi-role access</li><li>Student verification</li><li>Internship progress tracking</li><li>Faculty assessment workflows</li></ul>
-            <div class="tech-stack"><span>Web Development</span><span>Database Systems</span><span>Access Control</span></div>
-            <div class="project-links"><a href="https://github.com/Haggla123/internshipmanager" target="_blank" rel="noopener noreferrer">View on GitHub →</a></div>
+            <p>A streamlined platform for managing internship applications, scheduling, and tracking.</p>
+            <ul class="project-card__tags">
+              <li>Next.js</li><li>Python</li><li>OpenAI</li><li>Redis</li>
+            </ul>
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-visual"><img src="assets/gradlink.svg" alt="GradLink career platform preview" loading="lazy"></div>
-          <div class="project-content">
-            <p class="project-type">FULL-STACK · REAL-TIME APPLICATION</p>
-            <h3>GradLink</h3>
-            <p>A student–employer career platform supporting applicants, verified employers, administrators, job applications, and real-time communication.</p>
-            <ul><li>Multi-role architecture</li><li>Employer verification</li><li>Application tracking</li><li>Real-time communication</li></ul>
-            <div class="tech-stack"><span>MERN</span><span>Socket.IO</span><span>REST API</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contact ─── -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2 class="section__title reveal"><span class="gradient-text">Get In Touch</span></h2>
+      <p class="contact__subtitle reveal">Have a project in mind? Let's work together to create something amazing.</p>
+
+      <div class="contact__grid">
+        <form id="contact-form" class="contact-form glass-card reveal" novalidate>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required />
           </div>
-        </article>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full" id="submit-btn">
+            <span>Send Message</span>
+            <svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p id="form-feedback" class="form-feedback"></p>
+        </form>
+
+        <div class="contact__info reveal">
+          <div class="contact-info-card glass-card">
+            <div class="contact-info-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <p>hagglaagyei@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-info-card glass-card">
+            <div class="contact-info-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Location</h4>
+              <p>Remote — Worldwide</p>
+            </div>
+          </div>
+
+          <div class="contact__socials">
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+    </section>
 
-  <section id="skills" class="section skills-section">
+  <!-- ─── Footer ─── -->
+  <footer class="footer">
     <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">TECHNICAL SKILLS</p>
-        <h2>Technologies I work with.</h2>
-      </div>
-      <div class="skills-grid">
-        <article class="skill-group"><h3>Programming</h3><p>JavaScript, TypeScript, Python, C++, Java (basic), HTML5, CSS3</p></article>
-        <article class="skill-group"><h3>Frameworks & Systems</h3><p>React, Vite, Node.js, Express, REST APIs, Socket.IO</p></article>
-        <article class="skill-group"><h3>Databases</h3><p>MongoDB, MySQL</p></article>
-        <article class="skill-group"><h3>Security & Networking</h3><p>Authentication, authorization, RBAC, OTP workflows, hashing, HMAC, TCP/IP, LAN/WAN configuration, secure API design</p></article>
-        <article class="skill-group"><h3>Tools</h3><p>Git, GitHub, Figma, Adobe Photoshop, Canva, Microsoft Office</p></article>
-      </div>
+      <p>&copy; 2026 Haggla's Portfolio. Crafted with <span class="gradient-text">♥</span> and clean code.</p>
     </div>
-  </section>
+  </footer>
 
-  <section id="contact" class="section contact-section">
-    <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">CONTACT</p>
-        <h2>Let's connect.</h2>
-        <p>I'm interested in graduate research opportunities, software projects, and conversations around cybersecurity and secure systems.</p>
-      </div>
-      <div class="contact-links">
-        <a href="mailto:hagglaagyei@gmail.com">Email</a>
-        <a href="https://github.com/Haggla123" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/haggla" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer><div class="container"><p>© <span data-year></span> Haggla Mensah Agyei. Built with curiosity and purpose.</p></div></footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
