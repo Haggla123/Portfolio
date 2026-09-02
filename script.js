@@ -1,196 +1,124 @@
-/* ═══════════════════════════════════════════
-   Portfolio – Interactive JavaScript
-   ═══════════════════════════════════════════ */
+document.addEventListener("DOMContentLoaded", () => {
+  const navbar = document.querySelector(".navbar");
 
-document.addEventListener('DOMContentLoaded', () => {
+  const updateNavbar = () => {
+    navbar?.classList.toggle("scrolled", window.scrollY > 40);
+  };
 
-  /* ── Typing Effect ── */
-  const typedEl = document.getElementById('typed-name');
-  const words   = ['Haggla Mensah Agyei', 'a Developer', 'a Designer', 'a Creator'];
-  let wordIdx   = 0;
-  let charIdx   = 0;
-  let deleting   = false;
-  const typeSpeed   = 100;
-  const deleteSpeed = 55;
-  const pauseEnd    = 2000;
-  const pauseStart  = 400;
+  updateNavbar();
+  window.addEventListener("scroll", updateNavbar, { passive: true });
 
-  function type() {
-    const current = words[wordIdx];
-    if (!deleting) {
-      typedEl.textContent = current.slice(0, ++charIdx);
-      if (charIdx === current.length) {
-        setTimeout(() => { deleting = true; type(); }, pauseEnd);
-        return;
-      }
-    } else {
-      typedEl.textContent = current.slice(0, --charIdx);
-      if (charIdx === 0) {
-        deleting = false;
-        wordIdx = (wordIdx + 1) % words.length;
-        setTimeout(type, pauseStart);
-        return;
-      }
-    }
-    setTimeout(type, deleting ? deleteSpeed : typeSpeed);
-  }
-  type();
-
-
-  /* ── Navbar scroll effect ── */
-  const navbar = document.getElementById('navbar');
-  const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 50);
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-
-  /* ── Active nav-link highlight ── */
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  function highlightNav() {
-    const scrollY = window.scrollY + 120;
-    sections.forEach(sec => {
-      const top    = sec.offsetTop;
-      const height = sec.offsetHeight;
-      const id     = sec.getAttribute('id');
-      if (scrollY >= top && scrollY < top + height) {
-        navLinks.forEach(l => l.classList.remove('active'));
-        document.querySelector(`.nav-link[href="#${id}"]`)?.classList.add('active');
-      }
-    });
-  }
-  window.addEventListener('scroll', highlightNav, { passive: true });
-
-
-  /* ── Mobile hamburger ── */
-  const hamburger = document.getElementById('hamburger');
-  const navLinksEl = document.getElementById('nav-links');
-
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    navLinksEl.classList.toggle('open');
-  });
-
-  navLinksEl.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navLinksEl.classList.remove('open');
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const id = link.getAttribute("href");
+      if (!id || id === "#") return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
 
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".navbar nav a");
 
-  /* ── Scroll Reveal (Intersection Observer) ── */
-  const revealEls = document.querySelectorAll('.reveal');
+  if ("IntersectionObserver" in window) {
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => {
+          link.classList.toggle(
+            "active",
+            link.getAttribute("href") === `#${entry.target.id}`
+          );
+        });
+      });
+    }, { rootMargin: "-25% 0px -60% 0px", threshold: 0 });
 
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        // Stagger siblings
-        const siblings = entry.target.parentElement.querySelectorAll('.reveal');
-        const idx = Array.from(siblings).indexOf(entry.target);
-        entry.target.style.transitionDelay = `${idx * 0.1}s`;
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
+    sections.forEach((section) => navObserver.observe(section));
+
+    const revealElements = document.querySelectorAll(
+      ".research-card, .project-card, .skill-group"
+    );
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach((element) => {
+      element.classList.add("reveal");
+      revealObserver.observe(element);
     });
-  }, { threshold: 0.15 });
+  }
 
-  revealEls.forEach(el => revealObserver.observe(el));
+  document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+    link.setAttribute("rel", "noopener noreferrer");
+  });
 
+  const form = document.getElementById("contact-form");
 
-  /* ── Animated Counters ── */
-  const counters = document.querySelectorAll('[data-target]');
+  if (form && typeof emailjs !== "undefined") {
+    emailjs.init({ publicKey: "pHUAALjhwOC22olfg" });
 
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el     = entry.target;
-        const target = +el.dataset.target;
-        const dur    = 1800;
-        const start  = performance.now();
+    const feedback = document.getElementById("form-feedback");
+    const submitButton = document.getElementById("submit-btn");
 
-        function tick(now) {
-          const elapsed = now - start;
-          const progress = Math.min(elapsed / dur, 1);
-          // ease-out cubic
-          const ease = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.round(target * ease);
-          if (progress < 1) requestAnimationFrame(tick);
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const name = form.elements["name"]?.value.trim();
+      const email = form.elements["email"]?.value.trim();
+      const message = form.elements["message"]?.value.trim();
+
+      if (!name || !email || !message) {
+        if (feedback) {
+          feedback.textContent = "Please fill in all fields.";
+          feedback.className = "form-feedback error";
         }
-        requestAnimationFrame(tick);
-        counterObserver.unobserve(el);
+        return;
+      }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        if (feedback) {
+          feedback.textContent = "Please enter a valid email address.";
+          feedback.className = "form-feedback error";
+        }
+        return;
+      }
+
+      if (submitButton) submitButton.disabled = true;
+
+      try {
+        await emailjs.send("service_i02a0vm", "template_2y2s5th", {
+          from_name: name,
+          from_email: email,
+          message,
+          to_email: "hagglaagyei@gmail.com"
+        });
+
+        if (feedback) {
+          feedback.textContent = "Message sent successfully. I'll get back to you soon.";
+          feedback.className = "form-feedback success";
+        }
+
+        form.reset();
+      } catch (error) {
+        console.error("EmailJS error:", error);
+
+        if (feedback) {
+          feedback.textContent = "Unable to send the message. Please try again or contact me by email.";
+          feedback.className = "form-feedback error";
+        }
+      } finally {
+        if (submitButton) submitButton.disabled = false;
       }
     });
-  }, { threshold: 0.5 });
+  }
 
-  counters.forEach(c => counterObserver.observe(c));
-
-
-  /* ── Skill Bars ── */
-  const skillBars = document.querySelectorAll('.skill-bar__fill');
-
-  const barObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const fill = entry.target;
-        fill.style.width = fill.dataset.width + '%';
-        barObserver.unobserve(fill);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  skillBars.forEach(b => barObserver.observe(b));
-
-
-  /* ── Contact Form ── */
-  const form     = document.getElementById('contact-form');
-  const feedback = document.getElementById('form-feedback');
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const name    = form.name.value.trim();
-    const email   = form.email.value.trim();
-    const message = form.message.value.trim();
-
-    // Basic validation
-    if (!name || !email || !message) {
-      feedback.textContent = 'Please fill in all fields.';
-      feedback.className   = 'form-feedback error';
-      return;
-    }
-
-    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRe.test(email)) {
-      feedback.textContent = 'Please enter a valid email address.';
-      feedback.className   = 'form-feedback error';
-      return;
-    }
-
-    // Simulate submit
-    const btn = document.getElementById('submit-btn');
-    btn.disabled = true;
-    btn.querySelector('span').textContent = 'Sending…';
-
-    setTimeout(() => {
-      feedback.textContent = 'Message sent successfully! I\'ll get back to you soon. ✨';
-      feedback.className   = 'form-feedback success';
-      form.reset();
-      btn.disabled = false;
-      btn.querySelector('span').textContent = 'Send Message';
-    }, 1200);
-  });
-
-
-  /* ── Smooth scroll for anchors (fallback) ── */
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      const target = document.querySelector(anchor.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-
+  const year = document.querySelector("[data-year]");
+  if (year) year.textContent = new Date().getFullYear();
 });
